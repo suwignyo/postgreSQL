@@ -11,10 +11,7 @@ const client = new pg.Client({
   ssl      : settings.ssl
 });
 
-client.connect((err) => {
-  if (err) {
-    return console.error("Connection Error", err);
-  }
+function searchUser (user,cb){
   client.query(
     `SELECT *
        FROM famous_people
@@ -29,4 +26,11 @@ client.connect((err) => {
     })
     client.end();
   });
+}
+client.connect((err) => {
+  console.log("Searching...")
+  if (err) {
+    return console.error("Connection Error", err);
+  }
+  searchUser(myArgs)
 });
