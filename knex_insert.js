@@ -20,6 +20,6 @@ knex('famous_people')
   {first_name: myArgs[0],
    last_name: myArgs[1],
    birthdate: myArgs[2]})
-.asCallback(function()
-  {
+.asCallback(function(){
+  return knex.destroy();
 });
